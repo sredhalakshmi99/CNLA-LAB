@@ -5,15 +5,19 @@
 #include<sys/stat.h>
 int main()
 {
-	int arr[100], limit, i, even=0, fd;
+	int arr[100], limit, i, j, fd;
 	char fifo[] = "/tmp/myfifo";
 	mkfifo(fifo,0666);
 	printf("Enter the limit : ");
 	scanf("%d",&limit);
 	for (i=0; i<limit; i++)
-	{
-		arr[i]=even;
-		even+=2;
+	{	
+		j=i;
+		if(j%2==0)
+		{
+			arr[i]=j;
+		}
+		
 	}
 	fd=open(fifo, O_WRONLY);
 	if (fd==-1)
